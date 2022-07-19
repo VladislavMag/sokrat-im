@@ -1,0 +1,33 @@
+{% extends 'home/main-layout.html' %}
+{% block title %}
+    Link creation
+{% endblock %}
+{% block main_section %}
+
+<div class="main_flex">
+    <div class="box box-1">
+        <h2>Link creation</h2>
+    </div>
+    {% if user.is_authenticated %}
+    <div class="box box-2">
+          <form class="form-register auth" method="post">
+            {%csrf_token%}
+            {{form.as_p }}
+            <button class="bat" type="submit">Create</button>
+        </form>
+    </div>
+    <div class="box box-1">
+        <h2>Available links</h2>
+    </div>
+    <div class="box box-2 link">
+    {% for link in links %}
+        {% if link.avtor == user %}
+       <p></p><span>Link - </span> <a href="{{ link.link }}" target="_blank">link/{{ link.title }}</a> </p>
+        {% endif %}
+    {% endfor %}
+    </div>
+    {% else %}
+    <p>You need to <a href="{% url 'user' %}">log in</a> or <a href="{% url 'reg' %}"> register</a></p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'home/main-layout.html' %}
+{% block title %}
+    Exit
+{% endblock %}
+
+{% block main_section %}
+<div class="main_flex">
+    <div class="box box-1">
+        <h1>You logged out</h1>
+        <a href="{% url 'user' %}">Log in?</a>
+    </div>
+</div>
+{% endblock %}

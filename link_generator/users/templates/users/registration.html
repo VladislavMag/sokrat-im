@@ -1,0 +1,25 @@
+{% extends 'home/main-layout.html' %}
+{% block title %}
+    Registration
+{% endblock %}
+
+{% block main_section %}
+<div class="main_flex_reg">
+    <div class="box-reg box-1-reg">
+        <h1>Registration</h1>
+    </div>
+    <div class="box-reg box-2-reg">
+    <form class="form-register auth" method="post">
+        {%csrf_token%}
+        {{form.as_p }}
+        <button class="bat" type="submit">Submit</button>
+    </form>
+    </div>
+    <div class="box-reg box-3-reg">
+         <p>You already have an account?
+            <a href="{% url 'user' %}">Log in</a>
+         </p>
+    </div>
+
+</div>
+{% endblock %}

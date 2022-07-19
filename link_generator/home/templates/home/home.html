@@ -1,0 +1,13 @@
+{% extends 'home/main-layout.html' %}
+{% block title %}
+    Home
+{% endblock %}
+{% block main_section %}
+<div class="main">
+    <div class="main_in">
+        <h1>Sokrat.im</h1>
+        <p>We will quickly shorten <br> any link from your project</p>
+        <a href="{% url 'profile' %}"><button class="bat">Profile</button></a>
+    </div>
+</div>
+{% endblock %}

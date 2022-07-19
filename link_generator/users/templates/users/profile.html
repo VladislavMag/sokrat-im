@@ -1,0 +1,31 @@
+{% extends 'home/main-layout.html' %}
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block main_section %}
+<div class="main_flex">
+    <div class="box box-1">
+        <h1>User profile</h1>
+      <p>
+        <strong>@{{ user.username }}</strong>
+          {% if user.email %}
+          <br>
+          <b>Email:{{ user.email }}</b>
+          {% endif %}
+      </p>
+        <a href="{% url 'exit' %}"><button class="bat">Log out</button></a>
+
+<!--Обов'язковий атрибут для завантаження даних через форму enctype="multipart/form-data"-->
+        <h3>Update user data</h3>
+    </div>
+   <div class="box box-2">
+    <form class="form-register auth" enctype="multipart/form-data" method="post">
+            {%csrf_token%}
+            {{updateUserForm.as_p }}
+            {{profileForm.as_p }}
+            <button class="bat" type="submit">Update</button>
+    </form>
+    </div>
+</div>
+{% endblock %}

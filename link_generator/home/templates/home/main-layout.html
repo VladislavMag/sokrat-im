@@ -1,0 +1,57 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link href="pictures/user_image/logo1.png" rel="shortcut icon" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'home/main.css' %}">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+</head>
+<body>
+
+    <header>
+        <div>
+            <img src="pictures/user_image/logo.png" alt="logo">
+            <p>Clear<br>your link</p>
+        </div>
+        {% if user.is_authenticated == False %}
+        <ul>
+            <a href="{% url 'home' %}"> <li>Home</li></a>
+            <a href="{% url 'about' %}"> <li>About us</li></a>
+            <a href="{% url 'user' %}"> <li>Log in</li></a>
+            <a href="reg"> <li>Registration</li></a>
+        </ul>
+        {% else %}
+                <ul>
+            <a href="{% url 'home' %}"> <li>Home</li></a>
+            <a href="{% url 'about' %}"> <li>About us</li></a>
+            <a href="{% url 'profile' %}"> <li>Profile</li></a>
+            <a href="{% url 'link' %}"> <li>Link creation</li></a>
+
+        </ul>
+        {% endif %}
+    </header>
+    <main>
+        {% block main_section %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>All rights reserved©</p>
+        <nav>
+          <ul>
+            <a href=""><li class="f_item" id="YouTube">YouTube</li></a>
+            <a href=""><li class="f_item" id="Twitter">Twitter</li></a>
+            <a href=""><li class="f_item" id="FaceBook">FaceBook</li></a>
+            <a href=""><li class="f_item" id="Instagram" >Instagram</li></a>
+          </ul>
+        </nav>
+
+    </footer>
+</body>
+</html>
